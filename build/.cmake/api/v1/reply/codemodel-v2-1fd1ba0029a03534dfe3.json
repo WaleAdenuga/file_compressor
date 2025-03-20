@@ -1,0 +1,87 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.10"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "FileCompressor",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "FileCompressor::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-FileCompressor-Debug-839622dbe38b9295ea6d.json",
+					"name" : "FileCompressor",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "one::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-one-Debug-24090cb427f39b783802.json",
+					"name" : "one",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "rubbish::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-rubbish-Debug-562048b3458cf8d7e942.json",
+					"name" : "rubbish",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "run::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-run-Debug-a7d7b0d778903202c40a.json",
+					"name" : "run",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/Users/David Rodgers/Documents/C++ Projects/file-compressor/build",
+		"source" : "C:/Users/David Rodgers/Documents/C++ Projects/file-compressor"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 8
+	}
+}
