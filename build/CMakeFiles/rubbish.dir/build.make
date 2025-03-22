@@ -65,7 +65,7 @@ include CMakeFiles/rubbish.dir/compiler_depend.make
 # Include the progress variables for this target.
 include CMakeFiles/rubbish.dir/progress.make
 
-CMakeFiles/rubbish: FileCompressor.exe
+CMakeFiles/rubbish: FileCompressor
 	FileCompressor.exe
 
 CMakeFiles/rubbish.dir/codegen:

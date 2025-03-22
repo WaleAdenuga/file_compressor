@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "stdint.h"
+#include <filesystem>
 
 #include "utils.h"
 #include "compressor.h"
@@ -13,16 +14,22 @@ using std::string;
 using std::vector;
 
 void print_usage_and_exit() {
-    std::cout << "  Use this tool to compress file sizes.\n" 
-              << "Usage: fcmp <input_file> [output_file]\n"
+    std::cout << "  Use this command-line tool to compress and decompress files.\n"          
+              << "Usage: \n\n"
+              << "  Compressing   -  fcmp compress <input_file_path>\n\n"
+              << "  Decompressing -  fcmp decompress <input_file_path>\n\n"
+              << "  \n"
+              << "  The output file will have the same name as the input file but with a.fcm extension.\n\n"
+              << "  The output file will be a binary file containing the compressed data.\n"
+              << "  The compressed file can be decompressed using the decompress command.\n"
+              << "  The decompressed file will have the same name as the input file but with the original extension.\n\n"
               << "\n"
-              << "  Providing a name for output_file is optional\n"
-              << "\n"
-              << "Example: \n"
-              << "  fcmp C:\\directory\\file.txt \n"
-              << "      creates file_compressed.txt in C:\\directory \n"
-              << "  fcmp C:\\directory\\file.txt new_file \n"
-              << "      creates new_file.txt in C:\\directory \n"
+              << "Examples: \n"
+              << "  fcmp compress \"C:\\directory\\file.txt\" \n"
+              << "      creates file_compressed.fcm in C:\\directory \n\n"
+              << "  fcmp decompress \"C:\\directory\\file.txt\" \n"
+              << "      creates original file in C:\\directory \n\n"
+
               << std::endl;
     exit(1);
 }
@@ -30,25 +37,32 @@ void print_usage_and_exit() {
 
 int main(int argc, char *argv[]) {
     
-    if (argc < 2 || argc > 3) {
+    if (argc != 3) {
         print_usage_and_exit();
     }
 
-    string input_file_path = argv[1];
-    // file name split at last dot ie test.txt returns test
-    size_t position = input_file_path.find_last_of(".");
-    string output_file_path = argc == 3? argv[2] : input_file_path.substr(0, position) + "_compressed.txt";
+    string input_file_path = argv[2];
+    std::filesystem::path filePath(input_file_path);
 
-
+    // We need to store the original file extension so we know what to decompress to 
     std::cout << "Input file path " << input_file_path << std::endl;
 
     vector<uint8_t> file_data = Utils::readFile(input_file_path);
+    std::cout << file_data.size() << std::endl;
 
     // Run compression program
     Compressor::HuffCompressor compressor;
-    compressor.compress(file_data, output_file_path);
-
-    std::cout << "Compressed file saved to: " << output_file_path << std::endl;
+    
+    string command = argv[1];
+    if (command == "compress") {
+        std::cout << "Compressing " << std::endl;
+        compressor.compress(input_file_path, file_data);
+    } else if (command == "decompress") {
+        std::cout << "Decompressing " << std::endl;
+        //compressor.decompress(file_data, output_file_name);
+    } else {
+        print_usage_and_exit();
+    }
 
     return 0;
 }

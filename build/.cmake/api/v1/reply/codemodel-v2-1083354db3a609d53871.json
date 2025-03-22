@@ -16,9 +16,7 @@
 					"targetIndexes" : 
 					[
 						0,
-						1,
-						2,
-						3
+						1
 					]
 				}
 			],
@@ -34,9 +32,7 @@
 					"targetIndexes" : 
 					[
 						0,
-						1,
-						2,
-						3
+						1
 					]
 				}
 			],
@@ -44,29 +40,15 @@
 			[
 				{
 					"directoryIndex" : 0,
-					"id" : "FileCompressor::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-FileCompressor-Debug-839622dbe38b9295ea6d.json",
-					"name" : "FileCompressor",
-					"projectIndex" : 0
-				},
-				{
-					"directoryIndex" : 0,
-					"id" : "one::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-one-Debug-24090cb427f39b783802.json",
-					"name" : "one",
-					"projectIndex" : 0
-				},
-				{
-					"directoryIndex" : 0,
-					"id" : "rubbish::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-rubbish-Debug-562048b3458cf8d7e942.json",
-					"name" : "rubbish",
+					"id" : "fcmp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-fcmp-Debug-75f4a3932d60a08f428a.json",
+					"name" : "fcmp",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "run::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-run-Debug-a7d7b0d778903202c40a.json",
+					"jsonFile" : "target-run-Debug-2ab2ffd71b9a4450ef2f.json",
 					"name" : "run",
 					"projectIndex" : 0
 				}

@@ -65,9 +65,9 @@ include CMakeFiles/run.dir/compiler_depend.make
 # Include the progress variables for this target.
 include CMakeFiles/run.dir/progress.make
 
-CMakeFiles/run: FileCompressor.exe
+CMakeFiles/run: FileCompressor
 CMakeFiles/run: C:/Users/David\ Rodgers/Documents/C++\ Projects/file-compressor/tests/test.txt
-	FileCompressor.exe "C:/Users/David Rodgers/Documents/C++ Projects/file-compressor/tests/test.txt"
+	FileCompressor.exe compress ../tests/test.txt
 
 CMakeFiles/run.dir/codegen:
 .PHONY : CMakeFiles/run.dir/codegen

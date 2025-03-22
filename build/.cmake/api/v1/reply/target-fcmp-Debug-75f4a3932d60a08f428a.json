@@ -2,10 +2,10 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "FileCompressor.exe"
+			"path" : "C:/Tools/fcmp/fcmp.exe"
 		},
 		{
-			"path" : "FileCompressor.pdb"
+			"path" : "C:/Tools/fcmp/fcmp.pdb"
 		}
 	],
 	"backtrace" : 1,
@@ -28,7 +28,7 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 10,
+				"line" : 19,
 				"parent" : 0
 			},
 			{
@@ -72,7 +72,7 @@
 			]
 		}
 	],
-	"id" : "FileCompressor::@6890427a1f51a3e7e1df",
+	"id" : "fcmp::@6890427a1f51a3e7e1df",
 	"link" : 
 	{
 		"commandFragments" : 
@@ -88,8 +88,8 @@
 		],
 		"language" : "CXX"
 	},
-	"name" : "FileCompressor",
-	"nameOnDisk" : "FileCompressor.exe",
+	"name" : "fcmp",
+	"nameOnDisk" : "fcmp.exe",
 	"paths" : 
 	{
 		"build" : ".",

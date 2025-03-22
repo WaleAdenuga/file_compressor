@@ -65,7 +65,7 @@ include CMakeFiles/one.dir/compiler_depend.make
 # Include the progress variables for this target.
 include CMakeFiles/one.dir/progress.make
 
-CMakeFiles/one: FileCompressor.exe
+CMakeFiles/one: FileCompressor
 	FileCompressor.exe input.txt
 
 CMakeFiles/one.dir/codegen:

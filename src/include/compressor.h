@@ -4,6 +4,7 @@
 #include <string>
 #include <queue>
 #include <unordered_map>
+#include <filesystem>
 #include "utils.h"
 
 namespace Compressor {
@@ -43,14 +44,14 @@ namespace Compressor {
                 destroyTree(root);
             }
 
-            void compress (const vector<uint8_t> input, const string& outputFilePath);
+            void compress (const std::filesystem::path& outputFilePath, const vector<uint8_t> file_input);
 
         private:
             void buildFrequencyTable(const vector<uint8_t>& input);
             void buildHuffmanTree();
             void generateHuffmanCodes(HuffmanNode *node, const vector<bool>& code);
             pair<vector<uint8_t>, int> encodeData(const vector<uint8_t> &data);
-            void writeCompressedData(const string& outputFilePath, pair<vector<uint8_t>, int>& encodedData);
+            void writeCompressedData(const std::filesystem::path& input_file_path, pair<vector<uint8_t>, int>& encodedData);
             void destroyTree(HuffmanNode *root);
 
             unordered_map<uint8_t, int> frequencyTable;

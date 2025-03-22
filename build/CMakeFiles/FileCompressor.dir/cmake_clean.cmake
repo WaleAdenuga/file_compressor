@@ -1,13 +1,13 @@
 file(REMOVE_RECURSE
+  "C:/Tools/fcmp/FileCompressor.exe"
+  "C:/Tools/fcmp/FileCompressor.exe.manifest"
+  "C:/Tools/fcmp/FileCompressor.pdb"
   "CMakeFiles/FileCompressor.dir/src/compressor/compressor.cpp.obj"
   "CMakeFiles/FileCompressor.dir/src/compressor/compressor.cpp.obj.d"
   "CMakeFiles/FileCompressor.dir/src/main.cpp.obj"
   "CMakeFiles/FileCompressor.dir/src/main.cpp.obj.d"
   "CMakeFiles/FileCompressor.dir/src/utils/utils.cpp.obj"
   "CMakeFiles/FileCompressor.dir/src/utils/utils.cpp.obj.d"
-  "FileCompressor.exe"
-  "FileCompressor.exe.manifest"
-  "FileCompressor.pdb"
   "libFileCompressor.dll.a"
 )
 

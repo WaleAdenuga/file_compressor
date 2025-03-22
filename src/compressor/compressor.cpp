@@ -7,13 +7,11 @@ namespace Compressor {
     /// @brief Compression program
     /// @param input 
     /// @param outputFilePath 
-    void HuffCompressor::compress(const vector<uint8_t> input, const string& outputFilePath) {
-        std::cout << "Compressing..... " << std::endl;
-        std::cout << "=============================================" << std::endl;
+    void HuffCompressor::compress(const std::filesystem::path& outputFilePath, const vector<uint8_t> file_input) {
         // Bring everything together
 
         // File has been read in main program - Create the frequency table
-        buildFrequencyTable(input);
+        buildFrequencyTable(file_input);
 
         // Build the Huffman tree from the frequency table
         buildHuffmanTree();
@@ -22,7 +20,7 @@ namespace Compressor {
         generateHuffmanCodes(root, {});
 
         // Encode the data using the Huffman codes
-        pair<vector<uint8_t>, int> encodedData = encodeData(input);
+        pair<vector<uint8_t>, int> encodedData = encodeData(file_input);
 
         // Write the compressed data to a file
         writeCompressedData(outputFilePath, encodedData);
@@ -31,13 +29,9 @@ namespace Compressor {
     /// @brief  Creates a map of each character and how often they appear in the input
     /// @param input - file data converted to a byte vector. 
     void HuffCompressor::buildFrequencyTable(const vector<uint8_t>& input) {
-        std::cout << "Building Frequency Table..... " << std::endl;
-        std::cout << "=============================================" << std::endl;
         for (const uint8_t &byte : input) {
             frequencyTable[byte]++;
         }
-        std::cout << "Done. " << std::endl;
-        std::cout << "=============================================" << std::endl;
     }
     
     /// @brief Builds a huffman tree from a frequency table
@@ -53,8 +47,6 @@ namespace Compressor {
                 Compare                    // The comparison function or functor that controls priority
             > variable_name;
          */
-        std::cout << "Building Huffman Tree..... " << std::endl;
-        std::cout << "=============================================" << std::endl;
         priority_queue<HuffmanNode*, vector<HuffmanNode*>, HuffmanCompare> min_heap;
         for (const auto &entry : frequencyTable) {
             min_heap.push(new HuffmanNode(entry.first, entry.second));
@@ -79,16 +71,12 @@ namespace Compressor {
             min_heap.push(combined);
         }
         root = min_heap.top();
-        std::cout << "Done. " << std::endl;
-        std::cout << "=============================================" << std::endl;
     }
 
     /// @brief Assign a unique binary code to each character by traversing the tree
     /// @param node root to start movement from
     /// @param code vector that contains the code - gets appended while traversing the tree
     void HuffCompressor::generateHuffmanCodes(HuffmanNode *node, const vector<bool>& code) {
-        std::cout << "Generating Huffman Codes..... " << std::endl;
-        std::cout << "=============================================" << std::endl;
         if (!node) return;
 
         // Check if node is leaf - it has no left or right children
@@ -104,16 +92,12 @@ namespace Compressor {
         vector<bool> rightCode = code;
         rightCode.push_back(true); //1 when you go right
         generateHuffmanCodes(node->right, rightCode);
-        std::cout << "Done. " << std::endl;
-        std::cout << "=============================================" << std::endl;
     }
 
     /// @brief Encodes the original file data into huffman code - ready for writing 
     /// @param data original file data to map byte to huffman code
     /// @return bitstring of huffman code
     pair<vector<uint8_t>, int> HuffCompressor::encodeData(const vector<uint8_t> &data) {
-        std::cout << "Encoding Generated Huffman Codes..... " << std::endl;
-        std::cout << "=============================================" << std::endl;
         string bitString;
         for (auto byte: data) {
             vector<bool> code = huffmanCodes[byte];
@@ -155,9 +139,6 @@ namespace Compressor {
             byteArray.push_back(currentByte);
         }
 
-        std::cout << "Done. " << std::endl;
-        std::cout << "=============================================" << std::endl;
-
         // Return the byte array and the total number of bits
         return pair<vector<uint8_t>, int>(byteArray, length);
     }
@@ -165,12 +146,15 @@ namespace Compressor {
     /// @brief Function to write the compressed data to an output file
     /// @param outputFilePath Path to the output file 
     /// @param encodedData Huffman encoded data and the original size of the bitString
-    void HuffCompressor::writeCompressedData(const string& outputFilePath, pair<vector<uint8_t>, int>& encodedData) {
-        std::cout << "Writing compressed data to output file..... " << std::endl;
-        std::cout << "=============================================" << std::endl;
+    void HuffCompressor::writeCompressedData(const std::filesystem::path& inputFilePath, pair<vector<uint8_t>, int>& encodedData) {
         // Layout of output file looks like this:
         /**
+         * 
          *  +-------------------------+
+            | nameSize (uint32_t)     |  // e.g., 5
+            +-------------------------+
+            | origfileName (uint16_t) |  // e.g., photo.jpg, test.txt
+            +-------------------------+
             | tableSize (uint32_t)    |  // e.g., 6
             +-------------------------+
             | byte  | frequency       |  // 'a', 5
@@ -183,6 +167,13 @@ namespace Compressor {
             +-------------------------+
          */
         vector<uint8_t> outputFileBuffer;
+
+        // Write original file name size
+        uint32_t nameSize = inputFilePath.filename().string().size();
+        Utils::appendToBuffer(outputFileBuffer, nameSize);
+
+        // Write original file name (the original extension is included)
+        Utils::appendToBuffer(outputFileBuffer, inputFilePath.filename().c_str());
 
         // Write tableSize
         uint32_t tableSize = static_cast<uint32_t>(frequencyTable.size());
@@ -201,7 +192,15 @@ namespace Compressor {
         // Write compressed data
         outputFileBuffer.insert(outputFileBuffer.end(), encodedData.first.begin(), encodedData.first.end());
 
-        // Write the output file
+        // Generate the output file name and Write the output file
+        // Create the output file path
+        string parent_path = inputFilePath.parent_path().string();
+        string outputFilePath = "";
+        if (parent_path == ".") {
+            outputFilePath = inputFilePath.stem().string() + "_compressed.fcm";
+        } else {
+            outputFilePath = parent_path + "\\" + inputFilePath.stem().string() + "_compressed.fcm";
+        }
         Utils::writeFile(outputFilePath, outputFileBuffer);
 
         std::cout << "Done. " << std::endl;

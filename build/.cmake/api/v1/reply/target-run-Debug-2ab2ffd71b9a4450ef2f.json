@@ -18,17 +18,11 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 16,
+				"line" : 25,
 				"parent" : 0
 			}
 		]
 	},
-	"dependencies" : 
-	[
-		{
-			"id" : "FileCompressor::@6890427a1f51a3e7e1df"
-		}
-	],
 	"id" : "run::@6890427a1f51a3e7e1df",
 	"name" : "run",
 	"paths" : 

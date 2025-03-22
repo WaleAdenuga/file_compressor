@@ -62,11 +62,11 @@ CMAKE_BINARY_DIR = "C:\Users\David Rodgers\Documents\C++ Projects\file-compresso
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/FileCompressor.dir/all
+all: CMakeFiles/fcmp.dir/all
 .PHONY : all
 
 # The main recursive "codegen" target.
-codegen: CMakeFiles/FileCompressor.dir/codegen
+codegen: CMakeFiles/fcmp.dir/codegen
 .PHONY : codegen
 
 # The main recursive "preinstall" target.
@@ -74,49 +74,47 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/FileCompressor.dir/clean
+clean: CMakeFiles/fcmp.dir/clean
 clean: CMakeFiles/run.dir/clean
-clean: CMakeFiles/one.dir/clean
-clean: CMakeFiles/rubbish.dir/clean
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/FileCompressor.dir
+# Target rules for target CMakeFiles/fcmp.dir
 
 # All Build rule for target.
-CMakeFiles/FileCompressor.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\FileCompressor.dir\build.make CMakeFiles/FileCompressor.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\FileCompressor.dir\build.make CMakeFiles/FileCompressor.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="C:\Users\David Rodgers\Documents\C++ Projects\file-compressor\build\CMakeFiles" --progress-num=1,2,3,4 "Built target FileCompressor"
-.PHONY : CMakeFiles/FileCompressor.dir/all
+CMakeFiles/fcmp.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\fcmp.dir\build.make CMakeFiles/fcmp.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\fcmp.dir\build.make CMakeFiles/fcmp.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="C:\Users\David Rodgers\Documents\C++ Projects\file-compressor\build\CMakeFiles" --progress-num=1,2,3,4 "Built target fcmp"
+.PHONY : CMakeFiles/fcmp.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/FileCompressor.dir/rule: cmake_check_build_system
+CMakeFiles/fcmp.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\David Rodgers\Documents\C++ Projects\file-compressor\build\CMakeFiles" 4
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/FileCompressor.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/fcmp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\David Rodgers\Documents\C++ Projects\file-compressor\build\CMakeFiles" 0
-.PHONY : CMakeFiles/FileCompressor.dir/rule
+.PHONY : CMakeFiles/fcmp.dir/rule
 
 # Convenience name for target.
-FileCompressor: CMakeFiles/FileCompressor.dir/rule
-.PHONY : FileCompressor
+fcmp: CMakeFiles/fcmp.dir/rule
+.PHONY : fcmp
 
 # codegen rule for target.
-CMakeFiles/FileCompressor.dir/codegen:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\FileCompressor.dir\build.make CMakeFiles/FileCompressor.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="C:\Users\David Rodgers\Documents\C++ Projects\file-compressor\build\CMakeFiles" --progress-num=1,2,3,4 "Finished codegen for target FileCompressor"
-.PHONY : CMakeFiles/FileCompressor.dir/codegen
+CMakeFiles/fcmp.dir/codegen:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\fcmp.dir\build.make CMakeFiles/fcmp.dir/codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="C:\Users\David Rodgers\Documents\C++ Projects\file-compressor\build\CMakeFiles" --progress-num=1,2,3,4 "Finished codegen for target fcmp"
+.PHONY : CMakeFiles/fcmp.dir/codegen
 
 # clean rule for target.
-CMakeFiles/FileCompressor.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\FileCompressor.dir\build.make CMakeFiles/FileCompressor.dir/clean
-.PHONY : CMakeFiles/FileCompressor.dir/clean
+CMakeFiles/fcmp.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\fcmp.dir\build.make CMakeFiles/fcmp.dir/clean
+.PHONY : CMakeFiles/fcmp.dir/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/run.dir
 
 # All Build rule for target.
-CMakeFiles/run.dir/all: CMakeFiles/FileCompressor.dir/all
+CMakeFiles/run.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\run.dir\build.make CMakeFiles/run.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\run.dir\build.make CMakeFiles/run.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="C:\Users\David Rodgers\Documents\C++ Projects\file-compressor\build\CMakeFiles" --progress-num= "Built target run"
@@ -124,7 +122,7 @@ CMakeFiles/run.dir/all: CMakeFiles/FileCompressor.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/run.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\David Rodgers\Documents\C++ Projects\file-compressor\build\CMakeFiles" 4
+	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\David Rodgers\Documents\C++ Projects\file-compressor\build\CMakeFiles" 0
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/run.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\David Rodgers\Documents\C++ Projects\file-compressor\build\CMakeFiles" 0
 .PHONY : CMakeFiles/run.dir/rule
@@ -134,7 +132,7 @@ run: CMakeFiles/run.dir/rule
 .PHONY : run
 
 # codegen rule for target.
-CMakeFiles/run.dir/codegen: CMakeFiles/FileCompressor.dir/all
+CMakeFiles/run.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\run.dir\build.make CMakeFiles/run.dir/codegen
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="C:\Users\David Rodgers\Documents\C++ Projects\file-compressor\build\CMakeFiles" --progress-num= "Finished codegen for target run"
 .PHONY : CMakeFiles/run.dir/codegen
@@ -143,70 +141,6 @@ CMakeFiles/run.dir/codegen: CMakeFiles/FileCompressor.dir/all
 CMakeFiles/run.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\run.dir\build.make CMakeFiles/run.dir/clean
 .PHONY : CMakeFiles/run.dir/clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/one.dir
-
-# All Build rule for target.
-CMakeFiles/one.dir/all: CMakeFiles/FileCompressor.dir/all
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\one.dir\build.make CMakeFiles/one.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\one.dir\build.make CMakeFiles/one.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="C:\Users\David Rodgers\Documents\C++ Projects\file-compressor\build\CMakeFiles" --progress-num= "Built target one"
-.PHONY : CMakeFiles/one.dir/all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/one.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\David Rodgers\Documents\C++ Projects\file-compressor\build\CMakeFiles" 4
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/one.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\David Rodgers\Documents\C++ Projects\file-compressor\build\CMakeFiles" 0
-.PHONY : CMakeFiles/one.dir/rule
-
-# Convenience name for target.
-one: CMakeFiles/one.dir/rule
-.PHONY : one
-
-# codegen rule for target.
-CMakeFiles/one.dir/codegen: CMakeFiles/FileCompressor.dir/all
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\one.dir\build.make CMakeFiles/one.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="C:\Users\David Rodgers\Documents\C++ Projects\file-compressor\build\CMakeFiles" --progress-num= "Finished codegen for target one"
-.PHONY : CMakeFiles/one.dir/codegen
-
-# clean rule for target.
-CMakeFiles/one.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\one.dir\build.make CMakeFiles/one.dir/clean
-.PHONY : CMakeFiles/one.dir/clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/rubbish.dir
-
-# All Build rule for target.
-CMakeFiles/rubbish.dir/all: CMakeFiles/FileCompressor.dir/all
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\rubbish.dir\build.make CMakeFiles/rubbish.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\rubbish.dir\build.make CMakeFiles/rubbish.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="C:\Users\David Rodgers\Documents\C++ Projects\file-compressor\build\CMakeFiles" --progress-num= "Built target rubbish"
-.PHONY : CMakeFiles/rubbish.dir/all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/rubbish.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\David Rodgers\Documents\C++ Projects\file-compressor\build\CMakeFiles" 4
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/rubbish.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start "C:\Users\David Rodgers\Documents\C++ Projects\file-compressor\build\CMakeFiles" 0
-.PHONY : CMakeFiles/rubbish.dir/rule
-
-# Convenience name for target.
-rubbish: CMakeFiles/rubbish.dir/rule
-.PHONY : rubbish
-
-# codegen rule for target.
-CMakeFiles/rubbish.dir/codegen: CMakeFiles/FileCompressor.dir/all
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\rubbish.dir\build.make CMakeFiles/rubbish.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir="C:\Users\David Rodgers\Documents\C++ Projects\file-compressor\build\CMakeFiles" --progress-num= "Finished codegen for target rubbish"
-.PHONY : CMakeFiles/rubbish.dir/codegen
-
-# clean rule for target.
-CMakeFiles/rubbish.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\rubbish.dir\build.make CMakeFiles/rubbish.dir/clean
-.PHONY : CMakeFiles/rubbish.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

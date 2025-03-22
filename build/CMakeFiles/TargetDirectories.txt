@@ -1,6 +1,4 @@
-C:/Users/David Rodgers/Documents/C++ Projects/file-compressor/build/CMakeFiles/FileCompressor.dir
+C:/Users/David Rodgers/Documents/C++ Projects/file-compressor/build/CMakeFiles/fcmp.dir
 C:/Users/David Rodgers/Documents/C++ Projects/file-compressor/build/CMakeFiles/run.dir
-C:/Users/David Rodgers/Documents/C++ Projects/file-compressor/build/CMakeFiles/one.dir
-C:/Users/David Rodgers/Documents/C++ Projects/file-compressor/build/CMakeFiles/rubbish.dir
 C:/Users/David Rodgers/Documents/C++ Projects/file-compressor/build/CMakeFiles/edit_cache.dir
 C:/Users/David Rodgers/Documents/C++ Projects/file-compressor/build/CMakeFiles/rebuild_cache.dir

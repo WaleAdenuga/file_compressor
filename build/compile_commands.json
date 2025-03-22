@@ -1,20 +1,20 @@
 [
 {
   "directory": "C:/Users/David Rodgers/Documents/C++ Projects/file-compressor/build",
-  "command": "C:\\mingw64\\bin\\g++.exe  @CMakeFiles/FileCompressor.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\FileCompressor.dir\\src\\main.cpp.obj -c \"C:\\Users\\David Rodgers\\Documents\\C++ Projects\\file-compressor\\src\\main.cpp\"",
+  "command": "C:\\mingw64\\bin\\g++.exe  @CMakeFiles/fcmp.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\fcmp.dir\\src\\main.cpp.obj -c \"C:\\Users\\David Rodgers\\Documents\\C++ Projects\\file-compressor\\src\\main.cpp\"",
   "file": "C:/Users/David Rodgers/Documents/C++ Projects/file-compressor/src/main.cpp",
-  "output": "CMakeFiles/FileCompressor.dir/src/main.cpp.obj"
+  "output": "CMakeFiles/fcmp.dir/src/main.cpp.obj"
 },
 {
   "directory": "C:/Users/David Rodgers/Documents/C++ Projects/file-compressor/build",
-  "command": "C:\\mingw64\\bin\\g++.exe  @CMakeFiles/FileCompressor.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\FileCompressor.dir\\src\\utils\\utils.cpp.obj -c \"C:\\Users\\David Rodgers\\Documents\\C++ Projects\\file-compressor\\src\\utils\\utils.cpp\"",
+  "command": "C:\\mingw64\\bin\\g++.exe  @CMakeFiles/fcmp.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\fcmp.dir\\src\\utils\\utils.cpp.obj -c \"C:\\Users\\David Rodgers\\Documents\\C++ Projects\\file-compressor\\src\\utils\\utils.cpp\"",
   "file": "C:/Users/David Rodgers/Documents/C++ Projects/file-compressor/src/utils/utils.cpp",
-  "output": "CMakeFiles/FileCompressor.dir/src/utils/utils.cpp.obj"
+  "output": "CMakeFiles/fcmp.dir/src/utils/utils.cpp.obj"
 },
 {
   "directory": "C:/Users/David Rodgers/Documents/C++ Projects/file-compressor/build",
-  "command": "C:\\mingw64\\bin\\g++.exe  @CMakeFiles/FileCompressor.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\FileCompressor.dir\\src\\compressor\\compressor.cpp.obj -c \"C:\\Users\\David Rodgers\\Documents\\C++ Projects\\file-compressor\\src\\compressor\\compressor.cpp\"",
+  "command": "C:\\mingw64\\bin\\g++.exe  @CMakeFiles/fcmp.dir/includes_CXX.rsp -g -std=gnu++17 -o CMakeFiles\\fcmp.dir\\src\\compressor\\compressor.cpp.obj -c \"C:\\Users\\David Rodgers\\Documents\\C++ Projects\\file-compressor\\src\\compressor\\compressor.cpp\"",
   "file": "C:/Users/David Rodgers/Documents/C++ Projects/file-compressor/src/compressor/compressor.cpp",
-  "output": "CMakeFiles/FileCompressor.dir/src/compressor/compressor.cpp.obj"
+  "output": "CMakeFiles/fcmp.dir/src/compressor/compressor.cpp.obj"
 }
 ]

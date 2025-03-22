@@ -58,8 +58,6 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
-  "CMakeFiles/FileCompressor.dir/DependInfo.cmake"
+  "CMakeFiles/fcmp.dir/DependInfo.cmake"
   "CMakeFiles/run.dir/DependInfo.cmake"
-  "CMakeFiles/one.dir/DependInfo.cmake"
-  "CMakeFiles/rubbish.dir/DependInfo.cmake"
   )

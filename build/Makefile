@@ -116,17 +116,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named FileCompressor
+# Target rules for targets named fcmp
 
 # Build rule for target.
-FileCompressor: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 FileCompressor
-.PHONY : FileCompressor
+fcmp: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 fcmp
+.PHONY : fcmp
 
 # fast build rule for target.
-FileCompressor/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\FileCompressor.dir\build.make CMakeFiles/FileCompressor.dir/build
-.PHONY : FileCompressor/fast
+fcmp/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\fcmp.dir\build.make CMakeFiles/fcmp.dir/build
+.PHONY : fcmp/fast
 
 #=============================================================================
 # Target rules for targets named run
@@ -141,38 +141,12 @@ run/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\run.dir\build.make CMakeFiles/run.dir/build
 .PHONY : run/fast
 
-#=============================================================================
-# Target rules for targets named one
-
-# Build rule for target.
-one: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 one
-.PHONY : one
-
-# fast build rule for target.
-one/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\one.dir\build.make CMakeFiles/one.dir/build
-.PHONY : one/fast
-
-#=============================================================================
-# Target rules for targets named rubbish
-
-# Build rule for target.
-rubbish: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 rubbish
-.PHONY : rubbish
-
-# fast build rule for target.
-rubbish/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\rubbish.dir\build.make CMakeFiles/rubbish.dir/build
-.PHONY : rubbish/fast
-
 src/compressor/compressor.obj: src/compressor/compressor.cpp.obj
 .PHONY : src/compressor/compressor.obj
 
 # target to build an object file
 src/compressor/compressor.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\FileCompressor.dir\build.make CMakeFiles/FileCompressor.dir/src/compressor/compressor.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\fcmp.dir\build.make CMakeFiles/fcmp.dir/src/compressor/compressor.cpp.obj
 .PHONY : src/compressor/compressor.cpp.obj
 
 src/compressor/compressor.i: src/compressor/compressor.cpp.i
@@ -180,7 +154,7 @@ src/compressor/compressor.i: src/compressor/compressor.cpp.i
 
 # target to preprocess a source file
 src/compressor/compressor.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\FileCompressor.dir\build.make CMakeFiles/FileCompressor.dir/src/compressor/compressor.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\fcmp.dir\build.make CMakeFiles/fcmp.dir/src/compressor/compressor.cpp.i
 .PHONY : src/compressor/compressor.cpp.i
 
 src/compressor/compressor.s: src/compressor/compressor.cpp.s
@@ -188,7 +162,7 @@ src/compressor/compressor.s: src/compressor/compressor.cpp.s
 
 # target to generate assembly for a file
 src/compressor/compressor.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\FileCompressor.dir\build.make CMakeFiles/FileCompressor.dir/src/compressor/compressor.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\fcmp.dir\build.make CMakeFiles/fcmp.dir/src/compressor/compressor.cpp.s
 .PHONY : src/compressor/compressor.cpp.s
 
 src/main.obj: src/main.cpp.obj
@@ -196,7 +170,7 @@ src/main.obj: src/main.cpp.obj
 
 # target to build an object file
 src/main.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\FileCompressor.dir\build.make CMakeFiles/FileCompressor.dir/src/main.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\fcmp.dir\build.make CMakeFiles/fcmp.dir/src/main.cpp.obj
 .PHONY : src/main.cpp.obj
 
 src/main.i: src/main.cpp.i
@@ -204,7 +178,7 @@ src/main.i: src/main.cpp.i
 
 # target to preprocess a source file
 src/main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\FileCompressor.dir\build.make CMakeFiles/FileCompressor.dir/src/main.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\fcmp.dir\build.make CMakeFiles/fcmp.dir/src/main.cpp.i
 .PHONY : src/main.cpp.i
 
 src/main.s: src/main.cpp.s
@@ -212,7 +186,7 @@ src/main.s: src/main.cpp.s
 
 # target to generate assembly for a file
 src/main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\FileCompressor.dir\build.make CMakeFiles/FileCompressor.dir/src/main.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\fcmp.dir\build.make CMakeFiles/fcmp.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
 src/utils/utils.obj: src/utils/utils.cpp.obj
@@ -220,7 +194,7 @@ src/utils/utils.obj: src/utils/utils.cpp.obj
 
 # target to build an object file
 src/utils/utils.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\FileCompressor.dir\build.make CMakeFiles/FileCompressor.dir/src/utils/utils.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\fcmp.dir\build.make CMakeFiles/fcmp.dir/src/utils/utils.cpp.obj
 .PHONY : src/utils/utils.cpp.obj
 
 src/utils/utils.i: src/utils/utils.cpp.i
@@ -228,7 +202,7 @@ src/utils/utils.i: src/utils/utils.cpp.i
 
 # target to preprocess a source file
 src/utils/utils.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\FileCompressor.dir\build.make CMakeFiles/FileCompressor.dir/src/utils/utils.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\fcmp.dir\build.make CMakeFiles/fcmp.dir/src/utils/utils.cpp.i
 .PHONY : src/utils/utils.cpp.i
 
 src/utils/utils.s: src/utils/utils.cpp.s
@@ -236,7 +210,7 @@ src/utils/utils.s: src/utils/utils.cpp.s
 
 # target to generate assembly for a file
 src/utils/utils.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\FileCompressor.dir\build.make CMakeFiles/FileCompressor.dir/src/utils/utils.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\fcmp.dir\build.make CMakeFiles/fcmp.dir/src/utils/utils.cpp.s
 .PHONY : src/utils/utils.cpp.s
 
 # Help Target
@@ -247,10 +221,8 @@ help:
 	@echo ... depend
 	@echo ... edit_cache
 	@echo ... rebuild_cache
-	@echo ... one
-	@echo ... rubbish
 	@echo ... run
-	@echo ... FileCompressor
+	@echo ... fcmp
 	@echo ... src/compressor/compressor.obj
 	@echo ... src/compressor/compressor.i
 	@echo ... src/compressor/compressor.s
