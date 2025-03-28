@@ -4,7 +4,12 @@
 #include <string>
 #include <queue>
 #include <unordered_map>
+#include <map>
 #include <filesystem>
+#include <optional>
+#include <iostream>
+#include <cstdint>
+#include <algorithm>
 #include "utils.h"
 
 namespace Compressor {
@@ -29,33 +34,37 @@ namespace Compressor {
     // huffman needs a min-heap where smallest node has the highest priority
     // priority_queue in c++ is max-heap
     // element a has higher priority if a->frequency is smaller than b->frequency
+    // What do we do when the frequency is the same (and screws up the tree generating different codes)? 
+    //         We compare by their a unique id to the huffman node
     struct HuffmanCompare {
         bool operator()(HuffmanNode *a, HuffmanNode *b) {
-            return a->frequency > b->frequency;
+            if (a->frequency != b->frequency)  return a->frequency > b->frequency; // Tie-breaker: Sort by data value
+            return a->data > b->data; // Default: Sort by frequency
         }
     };
 
     class HuffCompressor {
 
         public:
-            HuffCompressor() : root(nullptr) {}
+            explicit HuffCompressor() : root(nullptr) {}
             ~HuffCompressor() {
                 // Since it's called in destructor, no need to call explicitly
                 destroyTree(root);
             }
 
             void compress (const std::filesystem::path& outputFilePath, const vector<uint8_t> file_input);
+            HuffmanNode* buildHuffmanTree(const std::optional<unordered_map<uint8_t, int>>& receivedFrequencyTable);
+            void printHuffmanTree(HuffmanNode* node, const std::string& code);
 
         private:
-            void buildFrequencyTable(const vector<uint8_t>& input);
-            void buildHuffmanTree();
-            void generateHuffmanCodes(HuffmanNode *node, const vector<bool>& code);
+            void buildFrequencyTable(const vector<uint8_t>& input);     
+            void generateHuffmanCodes(HuffmanNode *node, const string& code);
             pair<vector<uint8_t>, int> encodeData(const vector<uint8_t> &data);
             void writeCompressedData(const std::filesystem::path& input_file_path, pair<vector<uint8_t>, int>& encodedData);
-            void destroyTree(HuffmanNode *root);
+            void destroyTree(HuffmanNode *root);  
 
             unordered_map<uint8_t, int> frequencyTable;
-            unordered_map<uint8_t, vector<bool>> huffmanCodes;
+            unordered_map<uint8_t, string> huffmanCodes;
             HuffmanNode* root = nullptr;
     };
 }

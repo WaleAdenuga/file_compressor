@@ -20,10 +20,11 @@ add_executable(fcmp
     src/main.cpp
     src/utils/utils.cpp
     src/compressor/compressor.cpp
+    src/compressor/decompressor.cpp
 )
 
 add_custom_target(
-    # create a new target called run, ALL lets it run when the project is built
+    # create a new target called run, ALL lets it run when the project is built but not used
     run
     # what to run when target is built
     COMMAND FileCompressor.exe compress ../tests/test.txt

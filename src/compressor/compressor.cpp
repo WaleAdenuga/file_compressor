@@ -7,14 +7,14 @@ namespace Compressor {
     /// @brief Compression program
     /// @param input 
     /// @param outputFilePath 
-    void HuffCompressor::compress(const std::filesystem::path& outputFilePath, const vector<uint8_t> file_input) {
+    void HuffCompressor::compress(const std::filesystem::path& inputFilePath, const vector<uint8_t> file_input) {
         // Bring everything together
 
         // File has been read in main program - Create the frequency table
         buildFrequencyTable(file_input);
 
         // Build the Huffman tree from the frequency table
-        buildHuffmanTree();
+        root = buildHuffmanTree(std::nullopt);
 
         // Generate the Huffman codes for each character in the frequency table
         generateHuffmanCodes(root, {});
@@ -23,7 +23,24 @@ namespace Compressor {
         pair<vector<uint8_t>, int> encodedData = encodeData(file_input);
 
         // Write the compressed data to a file
-        writeCompressedData(outputFilePath, encodedData);
+        writeCompressedData(inputFilePath, encodedData);
+    }
+
+    void HuffCompressor::printHuffmanTree(HuffmanNode* node, const std::string& code) {
+        if (!node) return;
+    
+        // If this is a leaf node (no children)
+        if (!node->left && !node->right) {
+            std::cout << "Symbol: " << static_cast<int>(node->data)
+                      << " ('" << (char)(isprint(node->data) ? node->data : '.') << "')"
+                      << " | Frequency: " << node->frequency
+                      << " | Code: " << code << std::endl;
+            return;
+        }
+    
+        // Traverse left and right
+        printHuffmanTree(node->left, code + "0");
+        printHuffmanTree(node->right, code + "1");
     }
 
     /// @brief  Creates a map of each character and how often they appear in the input
@@ -38,7 +55,8 @@ namespace Compressor {
     /// Using a priority queue - base elements based on their priority
     /// We would be using min-heap for huffman encoding - heap where the smallest element (lowest priority) comes out first
     /// repeatedly merge the two least frequent nodes
-    void HuffCompressor::buildHuffmanTree() {
+    HuffmanNode* HuffCompressor::buildHuffmanTree(const std::optional<unordered_map<uint8_t, int>>&
+         receivedFrequencyTable) {
         // First create queue & insert all elements into the queue. The queue will automatically reorder based on frequency
         /**
          *  std::priority_queue<
@@ -48,10 +66,15 @@ namespace Compressor {
             > variable_name;
          */
         priority_queue<HuffmanNode*, vector<HuffmanNode*>, HuffmanCompare> min_heap;
-        for (const auto &entry : frequencyTable) {
+
+        // sort frequency table before inserting into min_heap - solved decompression problem - guarantees consistency when inserting since we'll always insert in the same order
+        std::map<uint8_t, int> sortedFrequencyTable(receivedFrequencyTable.value_or(frequencyTable).begin(), 
+                                                    receivedFrequencyTable.value_or(frequencyTable).end());
+
+        for (const auto &entry : sortedFrequencyTable) {
             min_heap.push(new HuffmanNode(entry.first, entry.second));
         }
-
+ 
         // Build the actual Huffman tree
         while (min_heap.size() > 1) {
             // pop the two nodes with the smallest priorities
@@ -70,13 +93,16 @@ namespace Compressor {
             // Push the combined node back into the queue
             min_heap.push(combined);
         }
-        root = min_heap.top();
+        if (min_heap.empty()) {
+            throw std::runtime_error("Error: Huffman tree construction failed. Priority queue is empty.");
+        } 
+        return min_heap.top();
     }
 
     /// @brief Assign a unique binary code to each character by traversing the tree
     /// @param node root to start movement from
-    /// @param code vector that contains the code - gets appended while traversing the tree
-    void HuffCompressor::generateHuffmanCodes(HuffmanNode *node, const vector<bool>& code) {
+    /// @param code string that contains the code - gets appended while traversing the tree
+    void HuffCompressor::generateHuffmanCodes(HuffmanNode *node, const string& code) {
         if (!node) return;
 
         // Check if node is leaf - it has no left or right children
@@ -85,13 +111,10 @@ namespace Compressor {
         }
 
         // Traverse through tree
-        vector<bool> leftCode = code;
-        leftCode.push_back(false); //0 when you go left
-        generateHuffmanCodes(node->left, leftCode);
-
-        vector<bool> rightCode = code;
-        rightCode.push_back(true); //1 when you go right
-        generateHuffmanCodes(node->right, rightCode);
+        //0 when you go left
+        generateHuffmanCodes(node->left, code + "0");
+        //1 when you go right
+        generateHuffmanCodes(node->right, code + "1");
     }
 
     /// @brief Encodes the original file data into huffman code - ready for writing 
@@ -100,9 +123,9 @@ namespace Compressor {
     pair<vector<uint8_t>, int> HuffCompressor::encodeData(const vector<uint8_t> &data) {
         string bitString;
         for (auto byte: data) {
-            vector<bool> code = huffmanCodes[byte];
-            for (bool bit : code) {
-                bitString += bit? '1' : '0';
+            string code = huffmanCodes[byte];
+            for (auto bit : code) {
+                bitString += (bit == '1') ? '1' : '0';
             }
         }
 
@@ -115,12 +138,8 @@ namespace Compressor {
 
         for (char bit : bitString) {
             // Shift left to make room for the new bit
-            currentByte <<= 1;
-
             // If the current bit is '1', set the least significant bit
-            if (bit == '1') {
-                currentByte |= 1;
-            }
+            currentByte = (currentByte << 1) | (bit - '0');
 
             bitCount++;
 
@@ -173,7 +192,8 @@ namespace Compressor {
         Utils::appendToBuffer(outputFileBuffer, nameSize);
 
         // Write original file name (the original extension is included)
-        Utils::appendToBuffer(outputFileBuffer, inputFilePath.filename().c_str());
+        string filename = inputFilePath.filename().string();
+        outputFileBuffer.insert(outputFileBuffer.end(), filename.begin(), filename.end());
 
         // Write tableSize
         uint32_t tableSize = static_cast<uint32_t>(frequencyTable.size());
@@ -204,7 +224,6 @@ namespace Compressor {
         Utils::writeFile(outputFilePath, outputFileBuffer);
 
         std::cout << "Done. " << std::endl;
-        std::cout << "=============================================" << std::endl;
     }
             
     void HuffCompressor::destroyTree(HuffmanNode *root) {

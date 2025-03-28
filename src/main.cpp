@@ -9,6 +9,7 @@
 
 #include "utils.h"
 #include "compressor.h"
+#include "decompressor.h"
 
 using std::string;
 using std::vector;
@@ -46,20 +47,21 @@ int main(int argc, char *argv[]) {
 
     // We need to store the original file extension so we know what to decompress to 
     std::cout << "Input file path " << input_file_path << std::endl;
-
-    vector<uint8_t> file_data = Utils::readFile(input_file_path);
-    std::cout << file_data.size() << std::endl;
-
-    // Run compression program
-    Compressor::HuffCompressor compressor;
     
     string command = argv[1];
     if (command == "compress") {
-        std::cout << "Compressing " << std::endl;
+        // Run compression program
+        Compressor::HuffCompressor compressor;
+        std::cout << "Compressing..... " << std::endl;
+        vector<uint8_t> file_data = Utils::readFile(input_file_path);
         compressor.compress(input_file_path, file_data);
+
     } else if (command == "decompress") {
-        std::cout << "Decompressing " << std::endl;
-        //compressor.decompress(file_data, output_file_name);
+        
+        std::cout << "Decompressing..... " << std::endl;
+        Decompressor::HuffDecompressor decompressor;
+        decompressor.decompress(input_file_path);
+
     } else {
         print_usage_and_exit();
     }
