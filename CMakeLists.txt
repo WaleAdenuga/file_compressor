@@ -21,7 +21,22 @@ add_executable(fcmp
     src/utils/utils.cpp
     src/compressor/compressor.cpp
     src/compressor/decompressor.cpp
+    src/compressor/images.cpp
 )
+
+# add dependencies for opencv library
+# have to manually set the library location and link libraries to it
+set(OpenCV_DIR "C:/Tools/opencv-mingw")
+find_package(OpenCV REQUIRED)
+
+if(OpenCV_FOUND)
+    message(STATUS "OpenCV found: ${OpenCV_VERSION}")
+    target_link_libraries(fcmp PRIVATE ${OpenCV_LIBS})
+    # use opencv definitions (ie check it exists before running functions)
+    target_compile_definitions(fcmp PRIVATE USE_OPENCV)
+else()
+    message(WARNING "OpenCV not found. Image Compression is disabled.")
+endif()
 
 add_custom_target(
     # create a new target called run, ALL lets it run when the project is built but not used
